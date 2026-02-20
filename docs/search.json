@@ -1,0 +1,43 @@
+[
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "“CO-OPS Products - NOAA Tides & Currents.” 2026. https://tidesandcurrents.noaa.gov/products.html.\n\n\n“FOIA: Freedom of Information Act | National Oceanic and\nAtmospheric Administration.” 2026. https://www.noaa.gov/information-technology/foia.\n\n\n“Optimum Interpolation Sea Surface Temperature (OISST).”\n2020. https://www.ncei.noaa.gov/products/optimum-interpolation-sst.\n\n\n“STAR - GOES-r Algorithm Working Group - Land and Ocean Data\nProducts - Sea Surface Temperature.” 2026. https://www.star.nesdis.noaa.gov/goesr/product_sst.php.\n\n\n“Station Home Page - NOAA Tides & Currents.” 2026. https://tidesandcurrents.noaa.gov/stationhome.html?id=8735180.\n\n\n“CO-OPS Products - NOAA Tides & Currents” (2026)\n“FOIA: Freedom of Information Act | National Oceanic and Atmospheric Administration” (2026)\n“Optimum Interpolation Sea Surface Temperature (OISST)” (2020)\n“STAR - GOES-r Algorithm Working Group - Land and Ocean Data Products - Sea Surface Temperature” (2026)\n“Station Home Page - NOAA Tides & Currents” (2026)",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "draft-data-doc.html",
+    "href": "draft-data-doc.html",
+    "title": "Appendix A — Draft: Data Documentation",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nwatertemp&lt;- read.csv(\"phys_ocean_data.csv\")\nwatertemp&lt;- watertemp|&gt; group_by(Date)\nwtc&lt;- watertemp |&gt; count(Water.Temp...F.)\n\n\nWho collected the data? NOAA has stations in which they have meteorological sensors.\nWhy the data was collected? They collect the data for the use of analyzing sea level trends.\nWhat the data is about? The data gives a 31 day range giving the temperatures at different points of the day.\nWhen the data was collected.? The data is calculated throughout the year, but there missing data for specific months\nWhere the data was collected? The data was collected from their Dauphin Island, AL station (ID: 8735180).\nHow the data was generated/collected? The meteorlogical sensors collect the data by using contact based probes in intervals of 6 minutes.\nStructure of the data? The data is structured where you can find temperature conductivity for each interval of time collected.\nFormatting decisions in the data? They decided that for formatting you would only be able to get data in intervals of 31 days per csv file.\nData validation/quality control For validating data there are 3 algorithims that collect and process data and then are compared against satellite data.\nHow the data can be reused/license Due to the freedom of Information Act any person has the ritght to obtain records\nSuggested data analysis methods NOAA use Optimum Interpolation Sea Surface Temperature, which uses a variety of ways that collects data and puts it in a global grid.\nMeasurement instruments used Meteorological Sensors\n\nCodebook 1. Variable name in the code? Water.Temp…F. 2. Long-form description of what was measured Water temperature for the given dates 3. Units of measurement Farenheit 4. Acceptable values All temperatures measured 5. Values used to indicate missingness, refusal to respond, etc. Values have a - to indicate missingness 6. Additional notes that may be relevant This data is between July 22nd to August 22nd due to it having a higher frequency at which it would be higher than the given maximum. It may be beneficial to get more date ranges to get a scope on the rest of the year, but NOAA only allows for 31 day range per csv.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Draft: Data Documentation</span>"
+    ]
+  }
+]

@@ -1,3 +1,50 @@
 ---
 title: "Draft: Data Documentation"
 ---
+```{r}
+library(dplyr)
+
+watertemp<- read.csv("phys_ocean_data.csv")
+watertemp<- watertemp|> group_by(Date)
+wtc<- watertemp |> count(Water.Temp...F.)
+```
+
+
+1. Who collected the data?
+  NOAA has stations in which they have meteorological sensors.
+2. Why the data was collected?
+  They collect the data for the use of analyzing sea level trends.
+3. What the data is about?
+  The data gives a 31 day range giving the temperatures at different points of the day.
+4. When the data was collected.?
+  The data is calculated throughout the year, but there missing data for specific months
+5. Where the data was collected?
+  The data was collected from their Dauphin Island, AL station (ID: 8735180).
+6. How the data was generated/collected?
+  The meteorlogical sensors collect the data by using contact based probes in intervals of 6 minutes.
+7. Structure of the data?
+  The data is structured where you can find temperature conductivity for each interval of time collected.
+8. Formatting decisions in the data?
+  They decided that for formatting you would only be able to get data in intervals of 31 days per csv file.
+9. Data validation/quality control
+  For validating data there are 3 algorithims that collect and process data and then are compared against satellite data.
+10. How the data can be reused/license
+  Due to the freedom of Information Act any person has the ritght to obtain records
+11. Suggested data analysis methods
+  NOAA use Optimum Interpolation Sea Surface Temperature, which uses a variety of ways that collects data and puts it in a global grid.
+12. Measurement instruments used
+  Meteorological Sensors
+
+Codebook
+1. Variable name in the code?
+  Water.Temp...F.
+2. Long-form description of what was measured
+  Water temperature for the given dates
+3. Units of measurement
+  Farenheit
+4. Acceptable values
+  All temperatures measured
+5. Values used to indicate missingness, refusal to respond, etc.
+  Values have a - to indicate missingness
+6. Additional notes that may be relevant
+  This data is between July 22nd to August 22nd due to it having a higher frequency at which it would be higher than the given maximum. It may be beneficial to get more date ranges to get a scope on the rest of the year, but NOAA only allows for 31 day range per csv.
