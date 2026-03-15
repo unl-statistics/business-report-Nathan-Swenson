@@ -2,3 +2,51 @@
 title: "Draft: Results"
 ---
 
+# Material and Methods
+
+  We obtained a water temperature dataset from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature each day from the years of 2020 to 2024 for the station in Dauphin Island. There were no availavle observations for the year of 2021. This data was used to identify the likliehood of the water temperature exceeds the temperature threshold that the plant is able to handle  (> 85F). 
+  
+  We obtained a dataset on generation from the U.S. Energy Information Administration. The dataset had covered the overall net generation that the James M. Barry Electric Generating Plant from the years of 2020 to 2024. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take. This was data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatthours).
+  
+  We obtained a dataset on consumption from the U.S. Energy Information Administration. The dataset had covered the consumption sales from all power companies from the years of 2020 to 2024. This dataset was used to find the consumption costs required by the power plants to meet demands (Megawatthours).
+  
+  To analyze the operational risk we had calculated the proportion of temperatures that exceeded 85 F over each of the months and calculated confidence intervals for each month. We then calculated the overall impact of running at reduced risk, by finding the contribution that the power plant takes and comparing it to electrical demands.
+  
+# Results
+
+Analysis of the water temperature from 2020 to 2024 had shown a seasonal increase in the months that occur through the middle of the year (April - October). Temperatures had peaked at around 86.6 during the months of July and August. The liklihood of exceeding 85F is high during the peak months. During the months of June and Septemember  the temperature reaches near 85, but it is unlikely to exceed.
+
+```{r, echo = FALSE}
+knitr::kable(cinfw)
+```
+
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+
+library(dplyr)
+
+as.numeric(avgin$Month)
+
+ggplot(avgin, aes(as.numeric(Month), Mean_Temp, color = factor(avgin$Year))) + 
+         geom_path() +
+  scale_x_continuous(breaks = scales::pretty_breaks())+
+  scale_color_viridis_d() +
+  scale_y_continuous(limits = c(40, 90)) +
+  labs(
+    title = "Temperature over Years",
+    x = "Month",
+    y = "Temperature",
+    color = "Year"
+  )
+  
+```
+
+Alabama Power Company is able to have a combined capacity of 14 million Killowatts (122.72 million Megawatt-hours); James M. Barry Power Plant contributes to 27% of the maximum capacity. Alabama Power Company contributes around 40% of its electricity towards consumption. James M. Barry Power Plant contributes to around 10% of the overall consumption. James M. Barry Power Plant was able to meet the consumption for each month. The capacity when reduced is net positive over time.
+
+```{r, echo = FALSE}
+
+knitr::kable(mean_net_consumption)
+
+```

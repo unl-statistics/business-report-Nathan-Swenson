@@ -4,7 +4,13 @@ title: "Draft: Data Documentation"
 ```{r}
 library(dplyr)
 
-watertemp<- read.csv("phys_ocean_data.csv")
+
+watertemp<- rbind(
+  read.csv("CSV/Temp2020.csv"), 
+  read.csv("CSV/Temp2022.csv"),
+  read.csv("CSV/Temp2023.csv"), 
+  read.csv("CSV/Temp2024.csv")
+  ) 
 watertemp<- watertemp|> group_by(Date)
 wtc<- watertemp |> count(Water.Temp...F.)
 ```

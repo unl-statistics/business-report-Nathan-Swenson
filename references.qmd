@@ -12,3 +12,7 @@
 @star-g
 
 @station
+
+@electric
+
+@formeia
