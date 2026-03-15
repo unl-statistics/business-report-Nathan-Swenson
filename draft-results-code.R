@@ -1,17 +1,10 @@
----
-title: "draft-results-code"
-format: html
----
-
-Datasets
-```{r}
 #NOAA water temperature data from 2020-2024 Hurricane Sally prevented any data from 2021
 wtemp<- rbind(
   read.csv("CSV/Temp/Temp2020.csv"), 
   read.csv("CSV/Temp/Temp2022.csv"),
   read.csv("CSV/Temp/Temp2023.csv"), 
   read.csv("CSV/Temp/Temp2024.csv")
-  )
+)
 
 #EIA consumption and sales data from 2020-2024
 econsump<- rbind(
@@ -24,12 +17,8 @@ econsump<- rbind(
 
 #EIA generation data from Barry
 egen<- read.csv("CSV/EnergyGeneration.csv", skip=4)
-```
 
-# Energy
-
-Cleaning Data
-```{r}
+#Cleaning
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -47,10 +36,8 @@ egen<- egen |> group_by(Month) |> summarise(net_gen = sum(as.numeric(net_gen), n
 egen<- separate(egen, Month, into = c("Month", "Year"), sep="\\.")
 
 wtemp<- separate(wtemp, Date, into = c("Year", "Month", "Day"), sep="\\/")
-```
 
-Finding The Power Plants contribution
-```{r}
+#Gen and Consumption
 MWcap_py<- 14519034/1000*(365*24)
 
 barcont<- c(
@@ -68,11 +55,6 @@ consume_py$Consumed_Per_Year<- consume_py$Consumed_Per_Year/MWcap_py
 
 contbybar<- consume_py
 contbybar$Consumed_Per_Year<- consume_py$Consumed_Per_Year * barcont
-```
-
-
-Energy after spent under reduced capacity
-```{r}
 
 barleft<- egen
 barleft$net_gen<- (barleft$net_gen)*.85 - (as.numeric(gsub(",", "", Alco$TotalS)) * contbybar$Consumed_Per_Year)
@@ -84,13 +66,9 @@ mean_net_consumption$Month<- factor(
   levels = month.abb
 )
 mean_net_consumption<- mean_net_consumption |> arrange (Month)
-```
-
-# Temp
-
-```{r}
 
 
+#Past Threshold
 wtemp$Water.Temp...F.<- as.numeric(wtemp$Water.Temp...F.) 
 
 mtempm<- wtemp
@@ -111,11 +89,6 @@ omtemp<- omtemp |> summarise(Mean_Temp = mean(Mean_Temp, na.rm = TRUE))
 
 mtempm<- mtempm |> filter(Mean_Temp > 85)
 ptemp<- ptemp |> filter(Prop_Temp > 0.5)
-```
-
-
-
-```{r}
 
 std_err <- wtemp
 std_err <- std_err |> filter(!is.na(std_err$Water.Temp...F.) == TRUE)
@@ -129,4 +102,6 @@ cinfw<- cinfw |> summarise(
   Mean = mean(Water.Temp...F.),
   ConfInt_High = mean(Water.Temp...F.) + 1.96 * (sd(Water.Temp...F.)/sqrt(length(Water.Temp...F.)))
 )
-```
+
+avgin<- wtemp |> group_by(Year, Month)
+avgin<- avgin |> summarise(Mean_Temp = mean(Water.Temp...F.))

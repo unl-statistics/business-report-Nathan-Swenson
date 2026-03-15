@@ -5,13 +5,14 @@ title: "Draft: Data Documentation"
 library(dplyr)
 
 
-watertemp<- rbind(
-  read.csv("CSV/Temp2020.csv"), 
-  read.csv("CSV/Temp2022.csv"),
-  read.csv("CSV/Temp2023.csv"), 
-  read.csv("CSV/Temp2024.csv")
-  ) 
-watertemp<- watertemp|> group_by(Date)
+wtemp<- rbind(
+  read.csv("CSV/Temp/Temp2020.csv"), 
+  read.csv("CSV/Temp/Temp2022.csv"),
+  read.csv("CSV/Temp/Temp2023.csv"), 
+  read.csv("CSV/Temp/Temp2024.csv")
+  )
+
+watertemp<- wtemp|> group_by(Date)
 wtc<- watertemp |> count(Water.Temp...F.)
 ```
 

@@ -170,8 +170,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#material-and-methods" id="toc-material-and-methods" class="nav-link active" data-scroll-target="#material-and-methods"><span class="header-section-number">C</span> Material and Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">D</span> Results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -195,8 +202,233 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There were 60 warnings in `summarise()`.
+The first warning was:
+ℹ In argument: `net_gen = sum(as.numeric(net_gen), na.rm = TRUE)`.
+ℹ In group 1: `Month = "Apr.2020"`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 59 remaining warnings.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by Year and Month.
+ℹ Output is grouped by Year.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(Year, Month))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has regrouped the output.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by Year and Month.
+ℹ Output is grouped by Year.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(Year, Month))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
+</div>
+</div>
+<section id="material-and-methods" class="level1" data-number="C">
+<h1 data-number="C"><span class="header-section-number">C</span> Material and Methods</h1>
+<p>We obtained a water temperature dataset from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature each day from the years of 2020 to 2024 for the station in Dauphin Island. There were no availavle observations for the year of 2021. This data was used to identify the likliehood of the water temperature exceeds the temperature threshold that the plant is able to handle (&gt; 85F).</p>
+<p>We obtained a dataset on generation from the U.S. Energy Information Administration. The dataset had covered the overall net generation that the James M. Barry Electric Generating Plant from the years of 2020 to 2024. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take. This was data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatthours).</p>
+<p>We obtained a dataset on consumption from the U.S. Energy Information Administration. The dataset had covered the consumption sales from all power companies from the years of 2020 to 2024. This dataset was used to find the consumption costs required by the power plants to meet demands (Megawatthours).</p>
+<p>To analyze the operational risk we had calculated the proportion of temperatures that exceeded 85 F over each of the months and calculated confidence intervals for each month. We then calculated the overall impact of running at reduced risk, by finding the contribution that the power plant takes and comparing it to electrical demands.</p>
+<p>remake following this methods section</p>
+</section>
+<section id="results" class="level1" data-number="D">
+<h1 data-number="D"><span class="header-section-number">D</span> Results</h1>
+<p>Analysis of the water temperature from 2020 to 2024 had shown a seasonal increase in the months that occur through the middle of the year (April - October). Temperatures had peaked at around 86.6 during the months of July and August. The liklihood of exceeding 85F is high during the peak months. During the months of June and Septemember the temperature reaches near 85, but it is unlikely to exceed.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Month</th>
+<th style="text-align: right;">ConfInt_Low</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">ConfInt_High</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">01</td>
+<td style="text-align: right;">57.93829</td>
+<td style="text-align: right;">58.10175</td>
+<td style="text-align: right;">58.26521</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">02</td>
+<td style="text-align: right;">59.00842</td>
+<td style="text-align: right;">59.18872</td>
+<td style="text-align: right;">59.36901</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">03</td>
+<td style="text-align: right;">66.01258</td>
+<td style="text-align: right;">66.25272</td>
+<td style="text-align: right;">66.49286</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">04</td>
+<td style="text-align: right;">71.02218</td>
+<td style="text-align: right;">71.11968</td>
+<td style="text-align: right;">71.21718</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">05</td>
+<td style="text-align: right;">78.57267</td>
+<td style="text-align: right;">78.70685</td>
+<td style="text-align: right;">78.84104</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">06</td>
+<td style="text-align: right;">84.29400</td>
+<td style="text-align: right;">84.38115</td>
+<td style="text-align: right;">84.46831</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">07</td>
+<td style="text-align: right;">86.52163</td>
+<td style="text-align: right;">86.60386</td>
+<td style="text-align: right;">86.68609</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">08</td>
+<td style="text-align: right;">86.54156</td>
+<td style="text-align: right;">86.63387</td>
+<td style="text-align: right;">86.72618</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">09</td>
+<td style="text-align: right;">82.05994</td>
+<td style="text-align: right;">82.23824</td>
+<td style="text-align: right;">82.41655</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">73.72584</td>
+<td style="text-align: right;">73.94682</td>
+<td style="text-align: right;">74.16780</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: right;">67.94581</td>
+<td style="text-align: right;">68.31812</td>
+<td style="text-align: right;">68.69044</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">59.57881</td>
+<td style="text-align: right;">59.90263</td>
+<td style="text-align: right;">60.22644</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10  1  2  3  4  5  6  7  8  9 10 11 12  1  2  3
+[26]  4  5  6  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 13 rows containing missing values or values outside the scale range
+(`geom_path()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="draft-results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Alabama Power Company is able to have a combined capacity of 14 million Killowatts (122.72 million Megawatt-hours); James M. Barry Power Plant contributes to 27% of the maximum capacity. Alabama Power Company contributes around 40% of its electricity towards consumption. James M. Barry Power Plant contributes to around 10% of the overall consumption. James M. Barry Power Plant was able to meet the consumption for each month. The capacity when reduced is net positive over time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Month</th>
+<th style="text-align: right;">mean_net_consumption</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Jan</td>
+<td style="text-align: right;">1119843</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Feb</td>
+<td style="text-align: right;">1734256</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mar</td>
+<td style="text-align: right;">1812837</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Apr</td>
+<td style="text-align: right;">1762516</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">May</td>
+<td style="text-align: right;">1794038</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jun</td>
+<td style="text-align: right;">2373484</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jul</td>
+<td style="text-align: right;">2610671</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aug</td>
+<td style="text-align: right;">2351991</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sep</td>
+<td style="text-align: right;">1999761</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oct</td>
+<td style="text-align: right;">1924169</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nov</td>
+<td style="text-align: right;">1896678</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dec</td>
+<td style="text-align: right;">2071052</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

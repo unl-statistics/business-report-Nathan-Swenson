@@ -245,9 +245,15 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>watertemp<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"phys_ocean_data.csv"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>watertemp<span class="ot">&lt;-</span> watertemp<span class="sc">|&gt;</span> <span class="fu">group_by</span>(Date)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>wtc<span class="ot">&lt;-</span> watertemp <span class="sc">|&gt;</span> <span class="fu">count</span>(Water.Temp...F.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wtemp<span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2020.csv"</span>), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2022.csv"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2023.csv"</span>), </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2024.csv"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>watertemp<span class="ot">&lt;-</span> wtemp<span class="sc">|&gt;</span> <span class="fu">group_by</span>(Date)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>wtc<span class="ot">&lt;-</span> watertemp <span class="sc">|&gt;</span> <span class="fu">count</span>(Water.Temp...F.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
 <li>Who collected the data? NOAA has stations in which they have meteorological sensors.</li>
