@@ -55,3 +55,12 @@ Codebook
   Values have a - to indicate missingness
 6. Additional notes that may be relevant
   This data is between July 22nd to August 22nd due to it having a higher frequency at which it would be higher than the given maximum. It may be beneficial to get more date ranges to get a scope on the rest of the year, but NOAA only allows for 31 day range per csv.
+
+::: callout-note
+
+How many of these values are missing? Is there any relationship between missingness? (e.g. you might imagine smaller bridges might not have some of the measurements?)
+
+
+Turn this into paragraphs!
+
+:::

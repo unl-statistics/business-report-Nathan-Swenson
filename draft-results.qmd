@@ -4,25 +4,65 @@ title: "Draft: Results"
 
 ```{r}
 #| file: draft-results-code.R
-#| echo: false
+#| include: false
 ```
 
+::: callout-note
+
+Don't include output (messages, etc.) from your code either. Make sure you're looking at the compiled version before you submit.
+
+:::
 
 # Material and Methods
 
-  We obtained a water temperature dataset from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature each day from the years of 2020 to 2024 for the station in Dauphin Island. There were no availavle observations for the year of 2021. This data was used to identify the likliehood of the water temperature exceeds the temperature threshold that the plant is able to handle  (> 85F). 
+We obtained a water temperature dataset from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature each day from the years of 2020 to 2024 for the station in Dauphin Island. There were no availavle observations for the year of 2021. This data was used to identify the likliehood of the water temperature exceeds the temperature threshold that the plant is able to handle  (> 85F).
   
-  We obtained a dataset on generation from the U.S. Energy Information Administration. The dataset had covered the overall net generation that the James M. Barry Electric Generating Plant from the years of 2020 to 2024. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take. This was data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatthours).
+We obtained a dataset on generation from the U.S. Energy Information Administration. The dataset had covered the overall net generation that the James M. Barry Electric Generating Plant from the years of 2020 to 2024. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take. This was data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatt hours).
+
+::: callout-note
+
+What is reduced capacity? How many MWh are produced? (side note, plant output is usually measured in MW, not MWh, especially for nuclear because it's on all the time).
+
+:::
   
-  We obtained a dataset on consumption from the U.S. Energy Information Administration. The dataset had covered the consumption sales from all power companies from the years of 2020 to 2024. This dataset was used to find the consumption costs required by the power plants to meet demands (Megawatthours).
+We obtained a dataset on consumption from the U.S. Energy Information Administration. The dataset had covered the consumption sales from all power companies from the years of 2020 to 2024. This dataset was used to find the consumption costs required by the power plants to meet demands (Megawatt hours).
   
-  To analyze the operational risk we had calculated the proportion of temperatures that exceeded 85 F over each of the months and calculated confidence intervals for each month. We then calculated the overall impact of running at reduced risk, by finding the contribution that the power plant takes and comparing it to electrical demands.
+To analyze the operational risk we had calculated the proportion of temperatures that exceeded 85 F over each of the months and calculated confidence intervals for each month. We then calculated the overall impact of running at reduced risk, by finding the contribution that the power plant takes and comparing it to electrical demands.
 
 remake following this methods section
-  
+
+
+::: callout-note
+
+Cite your data sources as bibliographic references. Additionally include the URLs to the data as footnotes^[This is how you add a footnote in quarto] the first time you mention e.g. how it was downloaded. Be explicit - your goal is to make sure someone can follow your instructions and reproduce your analysis.
+
+Spell check your work, please. In RStudio, you can use F7 to activate spell check.
+
+:::
+
 # Results
 
-Analysis of the water temperature from 2020 to 2024 had shown a seasonal increase in the months that occur through the middle of the year (April - October). Temperatures had peaked at around 86.6 during the months of July and August. The liklihood of exceeding 85F is high during the peak months. During the months of June and Septemember  the temperature reaches near 85, but it is unlikely to exceed.
+::: callout-note
+
+Why is this in past tense? It sounds strange...
+
+:::
+
+Analysis of the water temperature from 2020 to 2024 had shown a seasonal increase in the months that occur through the middle of the year (April - October). Temperatures had peaked at around 86.6 during the months of July and August. As shown in @fig-temp-time, the likelihood of exceeding 85F is high during the peak months. During the months of June and September  the temperature reaches near 85, but it is unlikely to exceed.
+
+::: callout-note
+
+"it is unlikely to exceed" -- fragment
+
+What is your table showing? MWh? Be a *lot* more explicit describing exactly what you have and how you got there.
+
+You're a stat student -- you have confidence intervals, but how did you get there and why is that method valid? You might need to back up and write a methods section.
+
+What is the goal of this portion of your analysis? Do you need to split the analysis up into temperature and MWh?
+
+Is there a better way to show the risk level? Tables are not *that* effective, overall. Can you highlight the problematic months somehow, if you decide to use a table?
+
+:::
 
 ```{r, echo = FALSE}
  
@@ -31,6 +71,9 @@ knitr::kable(cinfw)
 
 
 ```{r, echo = FALSE}
+#| label: fig-temp-time
+#| fig-cap: Caption here
+
 library(ggplot2)
 library(dplyr)
 
@@ -53,7 +96,24 @@ ggplot(avgin, aes(as.numeric(Month), Mean_Temp, color = factor(avgin$Year))) +
   
 ```
 
-  Alabama Power Company is able to have a combined capacity of 14 million Killowatts (122.72 million Megawatt-hours); James M. Barry Power Plant contributes to 27% of the maximum capacity. Alabama Power Company contributes around 40% of its electricity towards consumption. James M. Barry Power Plant contributes to around 10% of the overall consumption. James M. Barry Power Plant was able to meet the consumption for each month. The capacity when reduced is net positive over time.
+::: callout-note
+
+I cannot read the chart with the palette you're using -- yellow doesn't have sufficient contrast with the background.
+
+Figures and tables should have captions and should have dynamic numbering produced by quarto. I've done the figure -- you get to figure out the table.
+
+Every figure and table should be referenced appropriately in the text.
+
+You should have at least a couple of sentences about each figure/table and then some text connecting them together into the larger narrative.
+:::
+
+Alabama Power Company is able to have a combined capacity of 14 million Kilowatts (122.72 million Megawatt-hours); James M. Barry Power Plant contributes to 27% of the maximum capacity. Alabama Power Company contributes around 40% of its electricity towards consumption. James M. Barry Power Plant contributes to around 10% of the overall consumption. James M. Barry Power Plant was able to meet the consumption for each month. The capacity when reduced is net positive over time.
+
+::: callout-note
+
+Write more -- what does this tell you? How does it vary with temperature? You need to interpret the data you have in the context of the problem, and right now that is very much not clear.
+
+:::
 
 ```{r, echo = FALSE}
 
