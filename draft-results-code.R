@@ -29,9 +29,13 @@ Alco<- econsump |> filter(Name == "Alabama Power Co")
 
 Alco$Month<- month.abb[Alco$Month]
 
+Alco$TotalS<- as.numeric(gsub(",", "", Alco$TotalS))
+
 egen<- egen |> pivot_longer(cols = 3:62, names_to = "Month", values_to = "net_gen")
 
-egen<- egen |> group_by(Month) |> summarise(net_gen = sum(as.numeric(net_gen), na.rm=TRUE))
+egen<- egen |> filter(egen$X. != "Net generation-all primemovers-all fuels")
+
+egen<- egen |> group_by(Month) |> summarise(`Normal Capacity` = sum(as.numeric(net_gen), na.rm=TRUE))
 
 egen<- separate(egen, Month, into = c("Month", "Year"), sep="\\.")
 
@@ -41,11 +45,11 @@ wtemp<- separate(wtemp, Date, into = c("Year", "Month", "Day"), sep="\\/")
 MWcap_py<- 14519034/1000*(365*24)
 
 barcont<- c(
-  sum(egen$net_gen[egen$Year=="2020"])/MWcap_py,
-  sum(egen$net_gen[egen$Year=="2021"])/MWcap_py,
-  sum(egen$net_gen[egen$Year=="2022"])/MWcap_py,
-  sum(egen$net_gen[egen$Year=="2023"])/MWcap_py,
-  sum(egen$net_gen[egen$Year=="2024"])/MWcap_py)
+  sum(egen$`Normal Capacity`[egen$Year=="2020"])/MWcap_py,
+  sum(egen$`Normal Capacity`[egen$Year=="2021"])/MWcap_py,
+  sum(egen$`Normal Capacity`[egen$Year=="2022"])/MWcap_py,
+  sum(egen$`Normal Capacity`[egen$Year=="2023"])/MWcap_py,
+  sum(egen$`Normal Capacity`[egen$Year=="2024"])/MWcap_py)
 
 barcont<- mean(barcont)
 
@@ -55,17 +59,17 @@ consume_py$Consumed_Per_Year<- consume_py$Consumed_Per_Year/MWcap_py
 
 contbybar<- consume_py
 contbybar$Consumed_Per_Year<- consume_py$Consumed_Per_Year * barcont
+mean(contbybar$Consumed_Per_Year)
 
-barleft<- egen
-barleft$net_gen<- (barleft$net_gen)*.85 - (as.numeric(gsub(",", "", Alco$TotalS)) * contbybar$Consumed_Per_Year)
+egen$consump<- Alco$TotalS* contbybar$Consumed_Per_Year
+egen$`10% Reduced Capacity`<- egen$`Normal Capacity`*.9
+egen$`20% Reduced Capacity`<- egen$`Normal Capacity`*.8
+egen$`30% Reduced Capacity`<- egen$`Normal Capacity`*.7
 
-mean_net_consumption<- barleft |> group_by(Month)
-mean_net_consumption<- mean_net_consumption |> summarise(mean_net_consumption=(Mean_net = mean(net_gen)))
-mean_net_consumption$Month<- factor(
-  mean_net_consumption$Month,
-  levels = month.abb
-)
-mean_net_consumption<- mean_net_consumption |> arrange (Month)
+egen<- egen |> pivot_longer(cols = c(3, 5:7), names_to = "Capacity", values_to = "net_gen")
+
+ngen<- egen
+ngen$pu<- ngen$consump/ngen$net_gen
 
 
 #Past Threshold
@@ -86,9 +90,6 @@ optemp<- optemp |> summarise(Prop_Temp = mean(Prop_Temp, na.rm = TRUE))
 
 omtemp<- mtempm |> group_by(Month)
 omtemp<- omtemp |> summarise(Mean_Temp = mean(Mean_Temp, na.rm = TRUE))
-
-mtempm<- mtempm |> filter(Mean_Temp > 85)
-ptemp<- ptemp |> filter(Prop_Temp > 0.5)
 
 std_err <- wtemp
 std_err <- std_err |> filter(!is.na(std_err$Water.Temp...F.) == TRUE)

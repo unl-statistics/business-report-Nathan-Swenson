@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix A — Draft: Data Documentation – Evaluation of </title>
+<title>Appendix A — Draft: Data Documentation – Evaluation of Water Temp</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -130,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Evaluation of <scenario></scenario></a> 
+      <a href="./">Evaluation of Water Temp</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -204,8 +190,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#water-temperature" id="toc-water-temperature" class="nav-link active" data-scroll-target="#water-temperature"><span class="header-section-number">A.1</span> Water Temperature</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">A.1.1</span> Background</a></li>
+  <li><a href="#codebooksec-cb1" id="toc-codebooksec-cb1" class="nav-link" data-scroll-target="#codebooksec-cb1"><span class="header-section-number">A.1.2</span> Codebook[#sec-cb1]</a></li>
+  </ul></li>
+  <li><a href="#energy-production" id="toc-energy-production" class="nav-link" data-scroll-target="#energy-production"><span class="header-section-number">A.2</span> Energy Production</a>
+  <ul class="collapse">
+  <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1"><span class="header-section-number">A.2.1</span> Background</a></li>
+  <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook"><span class="header-section-number">A.2.2</span> Codebook</a></li>
+  </ul></li>
+  <li><a href="#energy-consumption" id="toc-energy-consumption" class="nav-link" data-scroll-target="#energy-consumption"><span class="header-section-number">A.3</span> Energy Consumption</a>
+  <ul class="collapse">
+  <li><a href="#background-2" id="toc-background-2" class="nav-link" data-scroll-target="#background-2"><span class="header-section-number">A.3.1</span> Background</a></li>
+  <li><a href="#codebook-1" id="toc-codebook-1" class="nav-link" data-scroll-target="#codebook-1"><span class="header-section-number">A.3.2</span> Codebook</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -230,7 +236,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -245,33 +250,79 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wtemp<span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2020.csv"</span>), </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2022.csv"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2023.csv"</span>), </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">"CSV/Temp/Temp2024.csv"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>watertemp<span class="ot">&lt;-</span> wtemp<span class="sc">|&gt;</span> <span class="fu">group_by</span>(Date)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>wtc<span class="ot">&lt;-</span> watertemp <span class="sc">|&gt;</span> <span class="fu">count</span>(Water.Temp...F.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol type="1">
-<li>Who collected the data? NOAA has stations in which they have meteorological sensors.</li>
-<li>Why the data was collected? They collect the data for the use of analyzing sea level trends.</li>
-<li>What the data is about? The data gives a 31 day range giving the temperatures at different points of the day.</li>
-<li>When the data was collected.? The data is calculated throughout the year, but there missing data for specific months</li>
-<li>Where the data was collected? The data was collected from their Dauphin Island, AL station (ID: 8735180).</li>
-<li>How the data was generated/collected? The meteorlogical sensors collect the data by using contact based probes in intervals of 6 minutes.</li>
-<li>Structure of the data? The data is structured where you can find temperature conductivity for each interval of time collected.</li>
-<li>Formatting decisions in the data? They decided that for formatting you would only be able to get data in intervals of 31 days per csv file.</li>
-<li>Data validation/quality control For validating data there are 3 algorithims that collect and process data and then are compared against satellite data.</li>
-<li>How the data can be reused/license Due to the freedom of Information Act any person has the ritght to obtain records</li>
-<li>Suggested data analysis methods NOAA use Optimum Interpolation Sea Surface Temperature, which uses a variety of ways that collects data and puts it in a global grid.</li>
-<li>Measurement instruments used Meteorological Sensors</li>
+<section id="water-temperature" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">A.1</span> Water Temperature</h2>
+<section id="background" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">A.1.1</span> Background</h3>
+<p>This dataset was collected from the National Oceanic Atmospheric Administration (NOAA) <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> covers hourly water temperature measurements from the years of 2020 to 2024. The data was meant to calculate the temperature trends at the Dauphin Island, AL station (ID: 8735180) <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. The temperature data was collected using meteorological in 6 minute intervals <span class="citation" data-cites="co-opsp"><span>“CO-OPS Products - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-co-opsp" role="doc-biblioref">2026</a>)</span>. There are two format type of data one in 6 minute increments and the other in hourly increments. To validate this data there are three algorithms that collect and process data and then are compared against satellite data <span class="citation" data-cites="star-g"><span>“STAR - GOES-r Algorithm Working Group - Land and Ocean Data Products - Sea Surface Temperature”</span> (<a href="references.html#ref-star-g" role="doc-biblioref">2026</a>)</span>. Due to the freedom of Information Act any person has the right to obtain the records <span class="citation" data-cites="foia:fr2026"><span>“FOIA: Freedom of Information Act | National Oceanic and Atmospheric Administration”</span> (<a href="references.html#ref-foia:fr2026" role="doc-biblioref">2026</a>)</span>. NOAA use Optimum Interpolation Sea Surface Temperature, which integrate a variety of ways that collects data and puts it in a global grid <span class="citation" data-cites="optimum2020"><span>“Optimum Interpolation Sea Surface Temperature (OISST)”</span> (<a href="references.html#ref-optimum2020" role="doc-biblioref">2020</a>)</span>.</p>
+</section>
+<section id="codebooksec-cb1" class="level3" data-number="A.1.2">
+<h3 data-number="A.1.2" class="anchored" data-anchor-id="codebooksec-cb1"><span class="header-section-number">A.1.2</span> Codebook[#sec-cb1]</h3>
+<p>The main variable of interest is <em>Water.Temp…F.</em>, where it is the water temperature given at the hourly intervals. They measured the temperature in Fahrenheit, missing values are indicated with <em>-</em>. It is important to note that there is no data in 2021 due to Hurricane Ida as well as missing months for the following years: 2022: January, February 2023: July, August, September, October, November, December 2024: January, February, March</p>
+</section>
+</section>
+<section id="energy-production" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="energy-production"><span class="header-section-number">A.2</span> Energy Production</h2>
+<section id="background-1" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="background-1"><span class="header-section-number">A.2.1</span> Background</h3>
+<p>Data from the James M. Barry Generating Plant was collected by the U.S. Energy Information Administration <span class="citation" data-cites="electric"><span>“Electricity Data Browser - Barry”</span> (<a href="references.html#ref-electric" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> gives the net generation of energy, in megawatt hours (MWh), over the years of 2020 to 2024. The power plant reports the data to the EIA <span class="citation" data-cites="surveyf"><span>“Survey Forms - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-surveyf" role="doc-biblioref">2026</a>)</span>. The data gathers the MWh generated for a given month. The data is free and open to the public <span class="citation" data-cites="opendata"><span>“Opendata - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-opendata" role="doc-biblioref">2026</a>)</span>. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.</p>
+</section>
+<section id="codebook" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="codebook"><span class="header-section-number">A.2.2</span> Codebook</h3>
+<p>The relevant variables are columns for each documented month, where it collects the megawatt hours for that month. Missing data was indicated with <em>–</em> there is missing data for January of 2020 and 2023.</p>
+</section>
+</section>
+<section id="energy-consumption" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="energy-consumption"><span class="header-section-number">A.3</span> Energy Consumption</h2>
+<section id="background-2" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="background-2"><span class="header-section-number">A.3.1</span> Background</h3>
+<p>Data on electricity consumption for Alabama Power Company was collected by the U.S. Energy Information Administration (EIA) <span class="citation" data-cites="formeia"><span>“Form EIA-861M (Formerly EIA-826) Detailed Data - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-formeia" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> gives the overall consumption of energy, in megawatt hours (MWh), over the years of 2020 to 2024. The data is reported from the power plant and sent to the EIA <span class="citation" data-cites="surveyf"><span>“Survey Forms - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-surveyf" role="doc-biblioref">2026</a>)</span>. The data gathers the megawatt hours consumed for a given month. The data is free and open to the public <span class="citation" data-cites="opendata"><span>“Opendata - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-opendata" role="doc-biblioref">2026</a>)</span>. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.</p>
+</section>
+<section id="codebook-1" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="codebook-1"><span class="header-section-number">A.3.2</span> Codebook</h3>
+<p>The variable name of interest is TotalS, which is the total sold for a given month. The data, in megawatt hours, does not contain any missing data. It is important to note that this is the consumption of Alabama Power Company not of the specific power plant, because of this we will find the contribution that the power plant makes towards the total generation.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-co-opsp" class="csl-entry" role="listitem">
+<span>“CO-OPS Products - NOAA Tides &amp; Currents.”</span> 2026. <a href="https://tidesandcurrents.noaa.gov/products.html">https://tidesandcurrents.noaa.gov/products.html</a>.
+</div>
+<div id="ref-electric" class="csl-entry" role="listitem">
+<span>“Electricity Data Browser - Barry.”</span> 2026. <a href="https://www.eia.gov/beta/electricity/data/browser/#/plant/3?freq=M&amp;start=202001&amp;end=202512&amp;ctype=linechart&amp;ltype=pin&amp;tab=generation&amp;pin=ELEC.CONS_TOT.COW-US-99.M&amp;maptype=0&amp;linechart=ELEC.PLANT.GEN.3-ALL-ALL.M&amp;columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M">https://www.eia.gov/beta/electricity/data/browser/#/plant/3?freq=M&amp;start=202001&amp;end=202512&amp;ctype=linechart&amp;ltype=pin&amp;tab=generation&amp;pin=ELEC.CONS_TOT.COW-US-99.M&amp;maptype=0&amp;linechart=ELEC.PLANT.GEN.3-ALL-ALL.M&amp;columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M</a>.
+</div>
+<div id="ref-foia:fr2026" class="csl-entry" role="listitem">
+<span>“FOIA: Freedom of Information Act | National Oceanic and Atmospheric Administration.”</span> 2026. <a href="https://www.noaa.gov/information-technology/foia">https://www.noaa.gov/information-technology/foia</a>.
+</div>
+<div id="ref-formeia" class="csl-entry" role="listitem">
+<span>“Form EIA-861M (Formerly EIA-826) Detailed Data - u.s. Energy Information Administration (EIA).”</span> 2026. <a href="https://www.eia.gov/electricity/data/eia861m/">https://www.eia.gov/electricity/data/eia861m/</a>.
+</div>
+<div id="ref-opendata" class="csl-entry" role="listitem">
+<span>“Opendata - u.s. Energy Information Administration (EIA).”</span> 2026. <a href="https://www.eia.gov/opendata/index.php">https://www.eia.gov/opendata/index.php</a>.
+</div>
+<div id="ref-optimum2020" class="csl-entry" role="listitem">
+<span>“Optimum Interpolation Sea Surface Temperature (OISST).”</span> 2020. <a href="https://www.ncei.noaa.gov/products/optimum-interpolation-sst">https://www.ncei.noaa.gov/products/optimum-interpolation-sst</a>.
+</div>
+<div id="ref-star-g" class="csl-entry" role="listitem">
+<span>“STAR - GOES-r Algorithm Working Group - Land and Ocean Data Products - Sea Surface Temperature.”</span> 2026. <a href="https://www.star.nesdis.noaa.gov/goesr/product_sst.php">https://www.star.nesdis.noaa.gov/goesr/product_sst.php</a>.
+</div>
+<div id="ref-station" class="csl-entry" role="listitem">
+<span>“Station Home Page - NOAA Tides &amp; Currents.”</span> 2026. <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8735180">https://tidesandcurrents.noaa.gov/stationhome.html?id=8735180</a>.
+</div>
+<div id="ref-surveyf" class="csl-entry" role="listitem">
+<span>“Survey Forms - u.s. Energy Information Administration (EIA).”</span> 2026. <a href="https://www.eia.gov//survey/index.php">https://www.eia.gov//survey/index.php</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://tidesandcurrents.noaa.gov/physocean.html?i d=8735180<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f req=M&amp;start=202001&amp;end=202512&amp;ctype=linechart&amp;ltype=pin&amp;tab=generation&amp;columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&amp;maptype=0&amp;pin=&amp;linechart=<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://www.eia.gov/electricity/data/eia861m/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>Codebook 1. Variable name in the code? Water.Temp…F. 2. Long-form description of what was measured Water temperature for the given dates 3. Units of measurement Farenheit 4. Acceptable values All temperatures measured 5. Values used to indicate missingness, refusal to respond, etc. Values have a - to indicate missingness 6. Additional notes that may be relevant This data is between July 22nd to August 22nd due to it having a higher frequency at which it would be higher than the given maximum. It may be beneficial to get more date ranges to get a scope on the rest of the year, but NOAA only allows for 31 day range per csv.</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -707,7 +758,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2025, Author Name</p>
+<p>Copyright 2025, Nathan Swenson</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

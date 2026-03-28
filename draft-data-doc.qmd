@@ -1,7 +1,11 @@
 ---
 title: "Draft: Data Documentation"
+editor: 
+  markdown: 
+    wrap: sentence
 ---
-```{r}
+
+```{r, echo=FALSE}
 library(dplyr)
 
 
@@ -12,55 +16,72 @@ wtemp<- rbind(
   read.csv("CSV/Temp/Temp2024.csv")
   )
 
-watertemp<- wtemp|> group_by(Date)
-wtc<- watertemp |> count(Water.Temp...F.)
+econsump<- rbind(
+  read.csv("CSV/Consump/Consump2020.csv", header=TRUE, skip = 2),
+  read.csv("CSV/Consump/Consump2021.csv", header=TRUE, skip = 2),
+  read.csv("CSV/Consump/Consump2022.csv", header=TRUE, skip = 2),
+  read.csv("CSV/Consump/Consump2023.csv", header=TRUE, skip = 2),
+  read.csv("CSV/Consump/Consump2024.csv", header=TRUE, skip = 2)
+)
+
+
+egen<- read.csv("CSV/EnergyGeneration.csv", skip=4)
 ```
 
+## Water Temperature
 
-1. Who collected the data?
-  NOAA has stations in which they have meteorological sensors.
-2. Why the data was collected?
-  They collect the data for the use of analyzing sea level trends.
-3. What the data is about?
-  The data gives a 31 day range giving the temperatures at different points of the day.
-4. When the data was collected.?
-  The data is calculated throughout the year, but there missing data for specific months
-5. Where the data was collected?
-  The data was collected from their Dauphin Island, AL station (ID: 8735180).
-6. How the data was generated/collected?
-  The meteorlogical sensors collect the data by using contact based probes in intervals of 6 minutes.
-7. Structure of the data?
-  The data is structured where you can find temperature conductivity for each interval of time collected.
-8. Formatting decisions in the data?
-  They decided that for formatting you would only be able to get data in intervals of 31 days per csv file.
-9. Data validation/quality control
-  For validating data there are 3 algorithims that collect and process data and then are compared against satellite data.
-10. How the data can be reused/license
-  Due to the freedom of Information Act any person has the ritght to obtain records
-11. Suggested data analysis methods
-  NOAA use Optimum Interpolation Sea Surface Temperature, which uses a variety of ways that collects data and puts it in a global grid.
-12. Measurement instruments used
-  Meteorological Sensors
+### Background
 
-Codebook
-1. Variable name in the code?
-  Water.Temp...F.
-2. Long-form description of what was measured
-  Water temperature for the given dates
-3. Units of measurement
-  Farenheit
-4. Acceptable values
-  All temperatures measured
-5. Values used to indicate missingness, refusal to respond, etc.
-  Values have a - to indicate missingness
-6. Additional notes that may be relevant
-  This data is between July 22nd to August 22nd due to it having a higher frequency at which it would be higher than the given maximum. It may be beneficial to get more date ranges to get a scope on the rest of the year, but NOAA only allows for 31 day range per csv.
+This dataset was collected from the National Oceanic Atmospheric Administration (NOAA) @station.
+The data[^draft-data-doc-1] covers hourly water temperature measurements from the years of 2020 to 2024.
+The data was meant to calculate the temperature trends at the Dauphin Island, AL station (ID: 8735180) @station. The temperature data was collected using meteorological in 6 minute intervals @co-opsp. There are two format type of data one in 6 minute increments and the other in hourly increments.
+To validate this data there are three algorithms that collect and process data and then are compared against satellite data @star-g. Due to the freedom of Information Act any person has the right to obtain the records @foia:fr2026. NOAA use Optimum Interpolation Sea Surface Temperature, which integrate a variety of ways that collects data and puts it in a global grid @optimum2020.
 
-::: callout-note
+[^draft-data-doc-1]: https://tidesandcurrents.noaa.gov/physocean.html?i
+    d=8735180
 
-How many of these values are missing? Is there any relationship between missingness? (e.g. you might imagine smaller bridges might not have some of the measurements?)
+### Codebook
 
+The main variable of interest is *Water.Temp...F.*, where it is the water temperature given at the hourly intervals.
+They measured the temperature in Fahrenheit, missing values are indicated with *-*.
+It is important to note that there is no data in 2021 due to Hurricane Ida as well as missing months for the following years: 
+2022: January, February
+2023: July, August, September, October, November, December
+2024: January, February, March
 
-Turn this into paragraphs!
+## Energy Production
 
-:::
+### Background
+
+Data from the James M. Barry Generating Plant was collected by the U.S.
+Energy Information Administration @electric.
+The data[^draft-data-doc-2] gives the net generation of energy, in megawatt hours (MWh), over the years of 2020 to 2024.
+The power plant reports the data to the EIA @surveyf.
+The data gathers the MWh generated for a given month.
+The data is free and open to the public @opendata. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
+
+[^draft-data-doc-2]: https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f
+    req=M&start=202001&end=202512&ctype=linechart&ltype=pin&tab=generation&columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&maptype=0&pin=&linechart=
+
+### Codebook
+
+The relevant variables are columns for each documented month, where it collects the megawatt hours for that month.
+Missing data was indicated with *--* there is missing data for January of 2020 and 2023.
+
+## Energy Consumption
+
+### Background
+
+Data on electricity consumption for Alabama Power Company was collected by the U.S.
+Energy Information Administration (EIA) @formeia.
+The data[^draft-data-doc-3] gives the overall consumption of energy, in megawatt hours (MWh), over the years of 2020 to 2024.
+The data is reported from the power plant and sent to the EIA @surveyf. The data gathers the megawatt hours consumed for a given month.
+The data is free and open to the public @opendata. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
+
+[^draft-data-doc-3]: https://www.eia.gov/electricity/data/eia861m/
+
+### Codebook
+
+The variable name of interest is TotalS, which is the total sold for a given month.
+The data, in megawatt hours, does not contain any missing data.
+It is important to note that this is the consumption of Alabama Power Company not of the specific power plant, because of this we will find the contribution that the power plant makes towards the total generation.
