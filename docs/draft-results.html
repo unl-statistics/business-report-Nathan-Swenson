@@ -234,13 +234,13 @@ div.csl-indent {
 <h1 data-number="C"><span class="header-section-number">C</span> Material and Methods</h1>
 <section id="water-temperature" class="level2" data-number="C.1">
 <h2 data-number="C.1" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">C.1</span> Water Temperature</h2>
-<p>We obtained a water temperature dataset<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature observations from the years of 2020 to 2024 for the station in Dauphin Island <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. There were no available observations for the year of 2021, due to Hurricane Ida. This data was used to identify the likelihood of the water temperature exceeds the temperature threshold that the plant is able to handle (&gt; 85F) using a confidence interval of 95%. Monthly average temperatures and the proportion of days exceeding 85F were calculated. High and moderate risk were months where more 50% and 20% of days exceeded 85F, respectively.</p>
+<p>We obtained a water temperature dataset<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature observations from the years of 2020 to 2024 for the station in Dauphin Island <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. There were no available observations for the year of 2021, due to Hurricane Ida. This data was used to identify the likelihood of the water temperature exceeds the temperature threshold that the plant is able to handle (&gt; 85F) using a confidence interval of 95%. Monthly average temperatures and the proportion of days exceeding 85F were calculated. High and moderate risk were months where more 50% and 20% of days exceeded 85F, respectively. We had then projected the next 5 years, and identified, which months would need to be ran at reduced capacity. To do this we had ran a linear regression model to find the trend and follow the trend for the projection.</p>
 </section>
 <section id="power-requirements" class="level2" data-number="C.2">
 <h2 data-number="C.2" class="anchored" data-anchor-id="power-requirements"><span class="header-section-number">C.2</span> Power Requirements</h2>
 <p>We obtained a dataset<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> on consumption from the U.S. Energy Information Administration. The dataset includes the consumption sales, per month, from all power companies from the years of 2020 to 2024 <span class="citation" data-cites="formeia"><span>“Form EIA-861M (Formerly EIA-826) Detailed Data - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-formeia" role="doc-biblioref">2026</a>)</span>. This dataset was used to find the consumption demands required by Alabama Power Company to meet demands (Megawatt hours).</p>
 <p>We obtained a dataset<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> on generation from the U.S. Energy Information Administration. The dataset had covered net generation, per month, that the James M. Barry Electric Generating Plant from the years of 2020 to 2024 <span class="citation" data-cites="electric"><span>“Electricity Data Browser - Barry”</span> (<a href="references.html#ref-electric" role="doc-biblioref">2026</a>)</span>. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take <span class="citation" data-cites="alabama"><span>“Alabama Power Service Territory”</span> (<a href="references.html#ref-alabama" role="doc-biblioref">2026</a>)</span>.</p>
-<p>This data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatt hours). We then compared this generation factored in with its contribution to consumption trends of Alabama Power Company. We defined reduced capacity as increments of 10%. These would be applied once temperature exceeds the applicable amount, the thresholds were starting at 85 and increased by 10% afterwards. We used the capacity type <em>Normal Capacity</em> as the real capacity used at the date. We are applying the assumption that the power plant does not need to go at a decreased capacity due to not being coastal, but was not found to be relevant because of Alabama Power Company being treated as a support system.</p>
+<p>This data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatt hours). We then compared this generation factored in with its contribution to consumption trends of Alabama Power Company. We defined reduced capacity as increments of 10%. These would be applied once temperature exceeds the applicable amount, the thresholds were starting at 85 and increased by 10% afterwards. We used the capacity type <em>Normal Capacity</em> as the real capacity used at the date. We are applying the assumption that the power plant does not need to go at a decreased capacity due to not being coastal, but was not found to be relevant because of Alabama Power Company being treated as a support system. We had predicted the impact over the next 5 years assuming that the rate of contribution stays consistent.</p>
 <p>James M. Barry Electric Generating Plant was chosen because it produces the most out of the power plants under Alabama Power Company, to compensate for a power plant needing to contribute proportionately we increased the contribution rate of the power plant <span class="citation" data-cites="generati"><span>“Generating Plants”</span> (<a href="references.html#ref-generati" role="doc-biblioref">2026</a>)</span>.</p>
 </section>
 </section>
@@ -248,24 +248,8 @@ div.csl-indent {
 <h1 data-number="D"><span class="header-section-number">D</span> Results</h1>
 <section id="water-temperature-1" class="level2" data-number="D.1">
 <h2 data-number="D.1" class="anchored" data-anchor-id="water-temperature-1"><span class="header-section-number">D.1</span> Water Temperature</h2>
-<p>The analysis shows a seasonal increase in water temperature from April through October. Temperatures peak in the month of July and August with mean temperatures of 86.6F (95% CI: 86.52-86.69) and 86.63F (95% CI: 86.54-86.73). As shown in <a href="#fig-temp-time" class="quarto-xref">Figure&nbsp;<span>D.1</span></a>, the likelihood of exceeding 85F is high during these peak months. During this period the power plant will be at high operational risk. The months June (35.1%) and September (30%) are at moderate-risk months. May (6%) represents low risk.</p>
+<p>The analysis shows a seasonal increase in water temperature from April through October. Temperatures peak in the month of July and August with mean temperatures of 86.62F (95% CI: 86.57-86.68) and 86.35F (95% CI: 86.31-86.38). With the peaks these months were identified with high risk. The months June (45.5%) and September (32%) are at moderate-risk months. Other months represent low risk (&lt;20%). Based on <a href="#fig-temp-time" class="quarto-xref">Figure&nbsp;<span>D.1</span></a> the projected temperatures from June to September roughly around 85F.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: viridisLite</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'scales'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:viridis':
-
-    viridis_pal</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10  1  2  3  4  5  6  7  8  9 10 11 12  1  2  3
-[26]  4  5  6  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-temp-time" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -273,7 +257,7 @@ Attaching package: 'scales'</code></pre>
 <img src="draft-results_files/figure-html/fig-temp-time-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-temp-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;D.1: This figure shows the mean temperature throughout each year from 2020 to 2024. The line shows the threshold where a power plant would need to run at reduced risk.
+Figure&nbsp;D.1: This figure shows the mean temperature throughout each year from 2002 to 2025. The line shows the threshold where a power plant would need to run at reduced risk. The projected temperature is denoted by years after the verticle line at the start 2026.
 </figcaption>
 </figure>
 </div>
@@ -282,13 +266,9 @@ Figure&nbsp;D.1: This figure shows the mean temperature throughout each year fro
 </section>
 <section id="power-requirement" class="level2" data-number="D.2">
 <h2 data-number="D.2" class="anchored" data-anchor-id="power-requirement"><span class="header-section-number">D.2</span> Power Requirement</h2>
-<p>Alabama Power Company produces a combined capacity of 14 million Kilowatts (122.72 million megawatt-hours ) <span class="citation" data-cites="generati"><span>“Generating Plants”</span> (<a href="references.html#ref-generati" role="doc-biblioref">2026</a>)</span>. James M. Barry Power Plant contributes to 17.9% of the maximum capacity. Total electrical demand represents approximately 40.4% of Alabama Power Company’s total capacity. James M. Barry Power Plant contributes to around 7.2% of the overall consumption. As shown in <a href="#fig-rc-time" class="quarto-xref">Figure&nbsp;<span>D.2</span></a> generation remains sufficient across all reduced capacity scenarios. The highest percentage consumed is October of 2023 at 50% of capacity, under a 30% reduced capacity.</p>
-<p>The analyses shows that the impact of running at reduced capacity is minimal assuming that all the data is running at regular capacity. The highest consumed month was October, which corresponds to a low-risk period of needing to be at reduced capacity.</p>
+<p>Alabama Power Company produces a com bined capacity of 14 million Kilowatts (122.72 million megawatt-hours ) <span class="citation" data-cites="generati"><span>“Generating Plants”</span> (<a href="references.html#ref-generati" role="doc-biblioref">2026</a>)</span>. James M. Barry Power Plant contributes to 10.3% of the maximum capacity. Total electrical demand represents approximately 40.4% of Alabama Power Company’s total capacity. James M. Barry Power Plant contributes to around 4.2% of the overall consumption. As shown in <a href="#fig-rc-time" class="quarto-xref">Figure&nbsp;<span>D.2</span></a> generation remains sufficient across all reduced capacity scenarios. The highest percentage consumed is April of 2023 at 50% of capacity, under a 30% reduced capacity rate. The projected months did not show to have impactful rates.</p>
+<p>The analyses shows that the impact of running at reduced capacity is minimal assuming that all the data is running at regular capacity. The highest consumed month was April, which corresponds to a low-risk period of needing to be at reduced capacity.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-rc-time" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -296,7 +276,7 @@ Figure&nbsp;D.1: This figure shows the mean temperature throughout each year fro
 <img src="draft-results_files/figure-html/fig-rc-time-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rc-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;D.2: This figure shows the generation proficiency at different operational capabilities at a given time. Transparency is denoted by percentage consumed.
+Figure&nbsp;D.2: This figure shows the generation proficiency at different operational capabilities at a given time. Transparency is denoted by percentage consumed. The projected Net generation is denoted by years after the verticle line at the start 2026.
 </figcaption>
 </figure>
 </div>

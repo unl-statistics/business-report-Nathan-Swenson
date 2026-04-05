@@ -5,29 +5,6 @@ editor:
     wrap: sentence
 ---
 
-```{r, echo=FALSE}
-library(dplyr)
-
-
-wtemp<- rbind(
-  read.csv("CSV/Temp/Temp2020.csv"), 
-  read.csv("CSV/Temp/Temp2022.csv"),
-  read.csv("CSV/Temp/Temp2023.csv"), 
-  read.csv("CSV/Temp/Temp2024.csv")
-  )
-
-econsump<- rbind(
-  read.csv("CSV/Consump/Consump2020.csv", header=TRUE, skip = 2),
-  read.csv("CSV/Consump/Consump2021.csv", header=TRUE, skip = 2),
-  read.csv("CSV/Consump/Consump2022.csv", header=TRUE, skip = 2),
-  read.csv("CSV/Consump/Consump2023.csv", header=TRUE, skip = 2),
-  read.csv("CSV/Consump/Consump2024.csv", header=TRUE, skip = 2)
-)
-
-
-egen<- read.csv("CSV/EnergyGeneration.csv", skip=4)
-```
-
 ## Water Temperature
 
 ### Background

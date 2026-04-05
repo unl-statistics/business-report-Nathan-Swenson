@@ -198,17 +198,17 @@ div.csl-indent {
   <li><a href="#water-temperature" id="toc-water-temperature" class="nav-link active" data-scroll-target="#water-temperature"><span class="header-section-number">A.1</span> Water Temperature</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">A.1.1</span> Background</a></li>
-  <li><a href="#codebooksec-cb1" id="toc-codebooksec-cb1" class="nav-link" data-scroll-target="#codebooksec-cb1"><span class="header-section-number">A.1.2</span> Codebook[#sec-cb1]</a></li>
+  <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook"><span class="header-section-number">A.1.2</span> Codebook</a></li>
   </ul></li>
   <li><a href="#energy-production" id="toc-energy-production" class="nav-link" data-scroll-target="#energy-production"><span class="header-section-number">A.2</span> Energy Production</a>
   <ul class="collapse">
   <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1"><span class="header-section-number">A.2.1</span> Background</a></li>
-  <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook"><span class="header-section-number">A.2.2</span> Codebook</a></li>
+  <li><a href="#codebook-1" id="toc-codebook-1" class="nav-link" data-scroll-target="#codebook-1"><span class="header-section-number">A.2.2</span> Codebook</a></li>
   </ul></li>
   <li><a href="#energy-consumption" id="toc-energy-consumption" class="nav-link" data-scroll-target="#energy-consumption"><span class="header-section-number">A.3</span> Energy Consumption</a>
   <ul class="collapse">
   <li><a href="#background-2" id="toc-background-2" class="nav-link" data-scroll-target="#background-2"><span class="header-section-number">A.3.1</span> Background</a></li>
-  <li><a href="#codebook-1" id="toc-codebook-1" class="nav-link" data-scroll-target="#codebook-1"><span class="header-section-number">A.3.2</span> Codebook</a></li>
+  <li><a href="#codebook-2" id="toc-codebook-2" class="nav-link" data-scroll-target="#codebook-2"><span class="header-section-number">A.3.2</span> Codebook</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,30 +235,14 @@ div.csl-indent {
 </header>
 
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-</div>
 <section id="water-temperature" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="water-temperature"><span class="header-section-number">A.1</span> Water Temperature</h2>
 <section id="background" class="level3" data-number="A.1.1">
 <h3 data-number="A.1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">A.1.1</span> Background</h3>
 <p>This dataset was collected from the National Oceanic Atmospheric Administration (NOAA) <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> covers hourly water temperature measurements from the years of 2020 to 2024. The data was meant to calculate the temperature trends at the Dauphin Island, AL station (ID: 8735180) <span class="citation" data-cites="station"><span>“Station Home Page - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-station" role="doc-biblioref">2026</a>)</span>. The temperature data was collected using meteorological in 6 minute intervals <span class="citation" data-cites="co-opsp"><span>“CO-OPS Products - NOAA Tides &amp; Currents”</span> (<a href="references.html#ref-co-opsp" role="doc-biblioref">2026</a>)</span>. There are two format type of data one in 6 minute increments and the other in hourly increments. To validate this data there are three algorithms that collect and process data and then are compared against satellite data <span class="citation" data-cites="star-g"><span>“STAR - GOES-r Algorithm Working Group - Land and Ocean Data Products - Sea Surface Temperature”</span> (<a href="references.html#ref-star-g" role="doc-biblioref">2026</a>)</span>. Due to the freedom of Information Act any person has the right to obtain the records <span class="citation" data-cites="foia:fr2026"><span>“FOIA: Freedom of Information Act | National Oceanic and Atmospheric Administration”</span> (<a href="references.html#ref-foia:fr2026" role="doc-biblioref">2026</a>)</span>. NOAA use Optimum Interpolation Sea Surface Temperature, which integrate a variety of ways that collects data and puts it in a global grid <span class="citation" data-cites="optimum2020"><span>“Optimum Interpolation Sea Surface Temperature (OISST)”</span> (<a href="references.html#ref-optimum2020" role="doc-biblioref">2020</a>)</span>.</p>
 </section>
-<section id="codebooksec-cb1" class="level3" data-number="A.1.2">
-<h3 data-number="A.1.2" class="anchored" data-anchor-id="codebooksec-cb1"><span class="header-section-number">A.1.2</span> Codebook[#sec-cb1]</h3>
+<section id="codebook" class="level3" data-number="A.1.2">
+<h3 data-number="A.1.2" class="anchored" data-anchor-id="codebook"><span class="header-section-number">A.1.2</span> Codebook</h3>
 <p>The main variable of interest is <em>Water.Temp…F.</em>, where it is the water temperature given at the hourly intervals. They measured the temperature in Fahrenheit, missing values are indicated with <em>-</em>. It is important to note that there is no data in 2021 due to Hurricane Ida as well as missing months for the following years: 2022: January, February 2023: July, August, September, October, November, December 2024: January, February, March</p>
 </section>
 </section>
@@ -268,8 +252,8 @@ Attaching package: 'dplyr'</code></pre>
 <h3 data-number="A.2.1" class="anchored" data-anchor-id="background-1"><span class="header-section-number">A.2.1</span> Background</h3>
 <p>Data from the James M. Barry Generating Plant was collected by the U.S. Energy Information Administration <span class="citation" data-cites="electric"><span>“Electricity Data Browser - Barry”</span> (<a href="references.html#ref-electric" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> gives the net generation of energy, in megawatt hours (MWh), over the years of 2020 to 2024. The power plant reports the data to the EIA <span class="citation" data-cites="surveyf"><span>“Survey Forms - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-surveyf" role="doc-biblioref">2026</a>)</span>. The data gathers the MWh generated for a given month. The data is free and open to the public <span class="citation" data-cites="opendata"><span>“Opendata - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-opendata" role="doc-biblioref">2026</a>)</span>. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.</p>
 </section>
-<section id="codebook" class="level3" data-number="A.2.2">
-<h3 data-number="A.2.2" class="anchored" data-anchor-id="codebook"><span class="header-section-number">A.2.2</span> Codebook</h3>
+<section id="codebook-1" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="codebook-1"><span class="header-section-number">A.2.2</span> Codebook</h3>
 <p>The relevant variables are columns for each documented month, where it collects the megawatt hours for that month. Missing data was indicated with <em>–</em> there is missing data for January of 2020 and 2023.</p>
 </section>
 </section>
@@ -279,8 +263,8 @@ Attaching package: 'dplyr'</code></pre>
 <h3 data-number="A.3.1" class="anchored" data-anchor-id="background-2"><span class="header-section-number">A.3.1</span> Background</h3>
 <p>Data on electricity consumption for Alabama Power Company was collected by the U.S. Energy Information Administration (EIA) <span class="citation" data-cites="formeia"><span>“Form EIA-861M (Formerly EIA-826) Detailed Data - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-formeia" role="doc-biblioref">2026</a>)</span>. The data<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> gives the overall consumption of energy, in megawatt hours (MWh), over the years of 2020 to 2024. The data is reported from the power plant and sent to the EIA <span class="citation" data-cites="surveyf"><span>“Survey Forms - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-surveyf" role="doc-biblioref">2026</a>)</span>. The data gathers the megawatt hours consumed for a given month. The data is free and open to the public <span class="citation" data-cites="opendata"><span>“Opendata - u.s. Energy Information Administration (EIA)”</span> (<a href="references.html#ref-opendata" role="doc-biblioref">2026</a>)</span>. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.</p>
 </section>
-<section id="codebook-1" class="level3" data-number="A.3.2">
-<h3 data-number="A.3.2" class="anchored" data-anchor-id="codebook-1"><span class="header-section-number">A.3.2</span> Codebook</h3>
+<section id="codebook-2" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="codebook-2"><span class="header-section-number">A.3.2</span> Codebook</h3>
 <p>The variable name of interest is TotalS, which is the total sold for a given month. The data, in megawatt hours, does not contain any missing data. It is important to note that this is the consumption of Alabama Power Company not of the specific power plant, because of this we will find the contribution that the power plant makes towards the total generation.</p>
 
 

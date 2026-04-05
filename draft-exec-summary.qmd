@@ -1,3 +1,22 @@
 ---
 title: "Draft: Executive Summary"
 ---
+
+# Abstract
+
+Power plants can face operational constraints due to environmental conditions. In this study we reported the likelihood of having to run at reduced capacity. Knowing that there may be increasing trends in both temperature and consumption, we projected the next 5 years for temperature and electrical generation. Using data from the U.S. Energy Information Administration and the National Oceanic and Atmospheric Administration, linear regression models were applied to identify trends and estimate future conditions. Peak months showed to have high risk of having temperatures above 85F and would lead to running at reduced capacity. Surrounding months have lesser risk of having to be ran, but should be oversaw. The trends had shown that over the next 5 years months between June through September will need to be ran at reduced capacity. Energy generation was adjusted to simulate impact at reduced capacity. The power plant is sufficient to contribute electrical demands, while at reduced capacity. Overall, the analysis shows how trends may impact the effectiveness of the power plant.
+
+# Executive Summary
+
+## Introduction
+
+Power plants are constrained to environmental factors. We must adapt to these constraints to maximize efficiency and avoid hazards. We focused on the James M. Barry Electric Generating Plant for this analysis
+## Methods
+
+We used historical temperature from the North Oceanic Atmospheric Administration and energy data from the U.S. Energy Information Administration. Monthly temperature averages and proportions of days exceeding 85F were calculated by each month to define risk levels. Risk levels were defined as High being above 50% of the month having temperatures exceeding 85F and moderate as being above 30%. Linear regression models were used to estimate projected temperature trends. Energy Generation was compared with Alabama Power Company's Energy consumption to identify impact of running at reduced capacity levels between 10% to 30%. We assossiated reduced capacity of 10% with temperature levels between 85F and 95F.
+## Results
+
+The analysis showed seasonal increases in temperature during the months of April through October, with relevant risk from months June through September. July and August were identified as high risk, while June and September were identified as mdoerate risk. These months over the next 5 years will approach or exceed critical thresholds over the next five years. Energy generation remains sufficient across all evaluated reduced capacity scenarios. Under underperforming periods where we will not meet demands, the Alabama Power Company system can meet demand through load balancing. 
+## Conclusion
+
+The analysis indicates that reduced capacity is managable under current conditions. Despite summer months having increased risk, the power system is able to compensate to avoid negative impact. However, continued increase in temperature and demand can increase risks overtime. For future analyses we should incorporate additional data and broader system considerations.

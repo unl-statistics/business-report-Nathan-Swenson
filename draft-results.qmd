@@ -7,11 +7,12 @@ title: "Draft: Results"
 #| include: false
 ```
 
+
 # Material and Methods
 
 ## Water Temperature
 
-We obtained a water temperature dataset[^draft-results-1] from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature observations from the years of 2020 to 2024 for the station in Dauphin Island @station. There were no available observations for the year of 2021, due to Hurricane Ida. This data was used to identify the likelihood of the water temperature exceeds the temperature threshold that the plant is able to handle (\> 85F) using a confidence interval of 95%. Monthly average temperatures and the proportion of days exceeding 85F were calculated. High and moderate risk were months where more 50% and 20% of days exceeded 85F, respectively.
+We obtained a water temperature dataset[^draft-results-1] from the National Oceanic and Atmospheric Administration. The dataset had covered the hourly temperature observations from the years of 2020 to 2024 for the station in Dauphin Island @station. There were no available observations for the year of 2021, due to Hurricane Ida. This data was used to identify the likelihood of the water temperature exceeds the temperature threshold that the plant is able to handle (\> 85F) using a confidence interval of 95%. Monthly average temperatures and the proportion of days exceeding 85F were calculated. High and moderate risk were months where more 50% and 20% of days exceeded 85F, respectively. We had then projected the next 5 years, and identified, which months would need to be ran at reduced capacity. To do this we had ran a linear regression model to find the trend and follow the trend for the projection.
 
 [^draft-results-1]: https://tidesandcurrents.noaa.gov/physocean.html?i d=8735180
 
@@ -23,7 +24,7 @@ We obtained a dataset[^draft-results-2] on consumption from the U.S. Energy Info
 
 We obtained a dataset[^draft-results-3] on generation from the U.S. Energy Information Administration. The dataset had covered net generation, per month, that the James M. Barry Electric Generating Plant from the years of 2020 to 2024 @electric. This dataset was used because Dauphin Island receives its power from the company Alabama Power Company, and this could be used to find the contribution a power plant would take @alabama. 
 
-This data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatt hours). We then compared this generation factored in with its contribution to consumption trends of Alabama Power Company. We defined reduced capacity as increments of 10%. These would be applied once temperature exceeds the applicable amount, the thresholds were starting at 85 and increased by 10% afterwards. We used the capacity type *Normal Capacity* as the real capacity used at the date. We are applying the assumption that the power plant does not need to go at a decreased capacity due to not being coastal, but was not found to be relevant because of Alabama Power Company being treated as a support system.
+This data was used to find the capabilities of the Plant in the periods where we need to run at reduced capacity (Megawatt hours). We then compared this generation factored in with its contribution to consumption trends of Alabama Power Company. We defined reduced capacity as increments of 10%. These would be applied once temperature exceeds the applicable amount, the thresholds were starting at 85 and increased by 10% afterwards. We used the capacity type *Normal Capacity* as the real capacity used at the date. We are applying the assumption that the power plant does not need to go at a decreased capacity due to not being coastal, but was not found to be relevant because of Alabama Power Company being treated as a support system. We had predicted the impact over the next 5 years assuming that the rate of contribution stays consistent.
 
 James M. Barry Electric Generating Plant was chosen because it produces the most out of the power plants under Alabama Power Company, to compensate for a power plant needing to contribute proportionately we increased the contribution rate of the power plant @generati.
 
@@ -33,58 +34,72 @@ James M. Barry Electric Generating Plant was chosen because it produces the most
 
 ## Water Temperature
 
-The analysis shows a seasonal increase in water temperature from April through October. Temperatures peak in the month of July and August with mean temperatures of 86.6F (95% CI: 86.52-86.69) and 86.63F (95% CI: 86.54-86.73). As shown in @fig-temp-time, the likelihood of exceeding 85F is high during these peak months. During this period the power plant will be at high operational risk. The months June (35.1%) and September (30%) are at moderate-risk months. May (6%) represents low risk.
+The analysis shows a seasonal increase in water temperature from April through October. Temperatures peak in the month of July and August with mean temperatures of 86.62F (95% CI: 86.57-86.68) and 86.35F (95% CI: 86.31-86.38). With the peaks these months were identified with high risk. The months June (45.5%) and September (32%) are at moderate-risk months. Other months represent low risk (<20%). Based on @fig-temp-time the projected temperatures from June to September roughly around 85F.
 
 ```{r, echo = FALSE}
 #| label: fig-temp-time
-#| fig-cap: This figure shows the mean temperature throughout each year from 2020 to 2024. The line shows the threshold where a power plant would need to run at reduced risk.
+#| fig-cap: This figure shows the mean temperature throughout each year from 2002 to 2025. The line shows the threshold where a power plant would need to run at reduced risk. The projected temperature is denoted by years after the verticle line at the start 2026.
+#| message: FALSE
 
 library(ggplot2)
 library(dplyr)
-library(viridis)
 library(scales)
+library(lubridate)
 
 
-as.numeric(avgin$Month)
-
-ggplot(mtempm, aes(as.numeric(Month), Mean_Temp, color = factor(mtempm$Year))) + 
-         geom_path() +
+ggplot(mtempm, aes(Year, Mean_Temp, color = Month)) + 
+  geom_line(aes(
+            group = Month,
+            color = Year > 2025)) +
   geom_hline(yintercept = 85) +
+  geom_vline(xintercept = 2026) +
+  scale_color_manual(values = c("FALSE" = "#0072B2", "TRUE" = "#E69F00"),
+                     labels = c("Observed", "Projected")) +
   scale_x_continuous(breaks = scales::pretty_breaks())+
+  theme (axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
+  facet_wrap(~Month) +
   scale_y_continuous(limits = c(40, 90)) +
   labs(
     title = "Temperature over Years",
-    x = "Month",
+    x = "Year",
     y = "Temperature",
-    color = "Year"
-  )
-  
+    color = "Status")
+
 ```
 
 ## Power Requirement
 
-Alabama Power Company produces a combined capacity of 14 million Kilowatts (122.72 million megawatt-hours ) @generati. James M. Barry Power Plant contributes to 17.9% of the maximum capacity. Total electrical demand represents approximately 40.4% of Alabama Power Company's total  capacity. James M. Barry Power Plant contributes to around 7.2% of the overall consumption. As shown in @fig-rc-time generation remains sufficient across all reduced capacity scenarios. The highest percentage consumed is October of 2023 at 50% of capacity, under a 30% reduced capacity.
+Alabama Power Company produces a com  bined capacity of 14 million Kilowatts (122.72 million megawatt-hours ) @generati. James M. Barry Power Plant contributes to 10.3% of the maximum capacity. Total electrical demand represents approximately 40.4% of Alabama Power Company's total  capacity. James M. Barry Power Plant contributes to around 4.2% of the overall consumption. As shown in @fig-rc-time generation remains sufficient across all reduced capacity scenarios. The highest percentage consumed is April of 2023 at 50% of capacity, under a 30% reduced capacity rate. The projected months did not show to have impactful rates.
 
-The analyses shows that the impact of running at reduced capacity is minimal assuming that all the data is running at regular capacity. The highest consumed month was October, which corresponds to a low-risk period of needing to be at reduced capacity.
+The analyses shows that the impact of running at reduced capacity is minimal assuming that all the data is running at regular capacity. The highest consumed month was April, which corresponds to a low-risk period of needing to be at reduced capacity.
 
 ```{r, echo = FALSE}
 #| label: fig-rc-time
-#| fig-cap: This figure shows the generation proficiency at different operational capabilities at a given time. Transparency is denoted by percentage consumed.  
+#| fig-cap: This figure shows the generation proficiency at different operational capabilities at a given time. Transparency is denoted by percentage consumed. The projected Net generation is denoted by years after the verticle line at the start 2026.
 
 ngen$time <- as.Date(
   paste(ngen$Year, ngen$Month, "01", sep = "-"),
   format = "%Y-%b-%d"
 )
 
-ggplot(ngen, aes(x = time, y = net_gen, group = Capacity, color = Capacity)) +
-  geom_line(aes(alpha = pu), size = 1.2) +
+
+
+ggplot(ngen, aes(x = time, y = net_gen)) +
+  geom_line(aes(alpha = pu,
+                group = Capacity,
+                color = Year > 2025)) +
   scale_y_continuous(labels = label_number(scale = 1e-6, suffix = "M")) +
+  facet_wrap(~factor(Capacity)) +
+  theme (axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
+  geom_vline(xintercept = as.Date("2026-01-01")) +
   scale_alpha(range = c(1, 0.1)) +
+  scale_color_manual(values = c("FALSE" = "#0072B2", "TRUE" = "#E69F00"),
+                     labels = c("Observed", "Projected")) +
   guides(alpha = "none") +
   labs(
     title = "Net Generation Over Time",
     x = "Year",
     y = "Generated Megawatt Hours",
-    color = "Capacity"
+    color = "Status"
   )
 ```
