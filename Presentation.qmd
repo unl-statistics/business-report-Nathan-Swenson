@@ -10,25 +10,99 @@ format: revealjs
 
 # Business Problem
 
+
 ::: {.incremental}
+- Power Plant face environmental constraints that affect efficiency and can lead to failure to meet demands
+- Power Plants rely on cooling to stay at a functional level
+- Global Warming elevates these constraints by making cooling systems less efficient
+:::
+
+
+## Context {.center}
+
 ::: {.fragment}
-
+Temperatures above 85°F create operation risk and forces reduced efficiency
 :::
-:::
 
-## Context
 ## Goal
+
+::: {.incremental}
+- Assess likelihood of reduced capacity
+- Evaluate the impact of running at reduced capacity
+- Project the risk and impact over the next 5 years
+:::
+
 # Data Overview
 
-::: {.incremental}
-
+::: {.fragment fragment-index=1}
+- NOAA water temperature data at the Dauphin Island Station
 :::
 
-# Methodology
+::: {.fragment fragment-index=2}
+- EIA energy generation data at the James M. Barry Electric Generating Plant
+:::
+
+::: {.fragment fragment-index=3}
+- EIA energy demand data from the Alabama Power Company
+:::
+
+::: {.footer fragment-index=4}
+NOAA (National Oceanic and Atmospheric Administration)
+https://tidesandcurrents.noaa.gov/physocean.html?i d=8735180
+EIA (Energy Information Administration)
+https://www.eia.gov/electricity/data/eia861m/
+EIA (Energy Information Administration)
+https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f req=M&start=202001&end=202512&ctype=linechart&ltype=pin&tab=generation&columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&maptype=0&pin=&linechart=
+:::
+
+
+# Methodology {.center}
+
 ## Approach 1
+
+::: {.incremental}
+1. Monthly Averages were calculated using confidence intervals
+2. Defined risk levels based on proportion of days above 85°F in water temperature
+3. Used linear regressions for temperature predictions
+:::
+
 ## Approach 2
-# Key Analysis
+
+::: {.incremental}
+1. Calculated average contribution  
+2. Energy generation was compared to consumption
+3. Evaluated impact of running at reduced capacity
+:::
+
+
 ## Finding 1
+
+::: {.fragment fragment-index=1}
+Peak month temperatures: 
+:::
+
+::: {.fragment fragment-index=2}
+- July *86.62°F (95% CI: 86.57-86.68)* \
+- August *86.35°F* *(95% CI: 86.31-86.38)*
+:::
+
+::: {.fragment fragment-index=3}
+High Risk months:
+:::
+
+::: {.fragment fragment-index=4}
+- July *(72.7%)* \
+- August *(73.6%)*
+:::
+
+::: {.fragment fragment-index=5}
+Moderate Risk months:
+:::
+
+::: {.fragment fragment-index=6}
+- June *(45.5%)*
+- September *(32%)*
+:::
 
 ---
 
@@ -63,6 +137,14 @@ ggplot(mtempm, aes(Year, Mean_Temp, color = Month)) +
 
 ## Finding 2
 
+::: {.fragment fragment-index=1}
+Defined Contribution: *10.3%*
+:::
+
+::: {.fragment fragment-index=2}
+Most impacted month: *50* of capacity April of 2023
+:::
+
 ---
 
 ```{r, echo = FALSE}
@@ -95,4 +177,24 @@ ggplot(mtempm, aes(Year, Mean_Temp, color = Month)) +
 ---
 
 # Interpretation
+- Power plant can cover reduced capacity of up to 30%
+- Reduced Capacity likely needed during high and moderate risk months
+- Failure to meet demand can be offset due to system
+
+# Limitations
+
+- Missing Data
+- Lack of context
+- Programming Errors
+
 # Recommendations
+
+::: {.incremental}
+- Operate at reduced capacity from June-September
+- Expand analysis to include power plants under Alabama Power Company
+- Monitor increasing temperature and energy demand
+:::
+
+# Refrences
+::: {#refs}
+:::

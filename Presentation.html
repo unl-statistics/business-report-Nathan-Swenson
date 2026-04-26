@@ -27,7 +27,26 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="Presentation_files/libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link href="Presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -132,54 +151,167 @@
 </div>
 
 </section>
-<section id="intro" class="title-slide slide level1 center">
-<h1>Intro</h1>
-
-</section>
-
 <section>
-<section id="water-temperature" class="title-slide slide level1 center">
-<h1>Water Temperature</h1>
-
+<section id="business-problem" class="title-slide slide level1 center">
+<h1>Business Problem</h1>
+<div>
+<ul>
+<li class="fragment">Power Plant face environmental constraints that affect efficiency and can lead to failure to meet demands</li>
+<li class="fragment">Power Plants rely on cooling to stay at a functional level</li>
+<li class="fragment">Global Warming elevates these constraints by making cooling systems less efficient</li>
+</ul>
+</div>
 </section>
-<section id="proccess" class="slide level2">
-<h2>Proccess</h2>
+<section id="context" class="slide level2 center">
+<h2>Context</h2>
+<div class="fragment">
+<p>Temperatures above 85°F create operation risk and forces reduced efficiency</p>
+</div>
 </section>
-<section id="analysis" class="slide level2">
-<h2>Analysis</h2>
-</section>
-<section id="graph" class="slide level2">
-<h2>Graph</h2>
-
-<img data-src="Presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="energy-generation" class="title-slide slide level1 center">
-<h1>Energy Generation</h1>
-
-</section>
-<section id="proccess-1" class="slide level2">
-<h2>Proccess</h2>
-</section>
-<section id="analysis-1" class="slide level2">
-<h2>Analysis</h2>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
+<div>
+<ul>
+<li class="fragment">Assess likelihood of reduced capacity</li>
+<li class="fragment">Evaluate the impact of running at reduced capacity</li>
+<li class="fragment">Project the risk and impact over the next 5 years</li>
+</ul>
+</div>
 </section></section>
+<section id="data-overview" class="title-slide slide level1 center">
+<h1>Data Overview</h1>
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li>NOAA water temperature data at the Dauphin Island Station</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li>EIA energy generation data at the James M. Barry Electric Generating Plant</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li>EIA energy demand data from the Alabama Power Company</li>
+</ul>
+</div>
+<div class="footer" data-fragment-index="4">
+<p>NOAA (National Oceanic and Atmospheric Administration) https://tidesandcurrents.noaa.gov/physocean.html?i d=8735180 EIA (Energy Information Administration) https://www.eia.gov/electricity/data/eia861m/ EIA (Energy Information Administration) https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f req=M&amp;start=202001&amp;end=202512&amp;ctype=linechart&amp;ltype=pin&amp;tab=generation&amp;columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&amp;maptype=0&amp;pin=&amp;linechart=</p>
+</div>
+</section>
+
 <section>
-<section id="energy-consumption" class="title-slide slide level1 center">
-<h1>Energy Consumption</h1>
+<section id="methodology" class="title-slide slide level1 center">
+<h1>Methodology</h1>
 
 </section>
-<section id="proccess-2" class="slide level2">
-<h2>Proccess</h2>
+<section id="approach-1" class="slide level2">
+<h2>Approach 1</h2>
+<div>
+<ol type="1">
+<li class="fragment">Monthly Averages were calculated using confidence intervals</li>
+<li class="fragment">Defined risk levels based on proportion of days above 85°F in water temperature</li>
+<li class="fragment">Used linear regressions for temperature predictions</li>
+</ol>
+</div>
 </section>
-<section id="analysis-2" class="slide level2">
-<h2>Analysis</h2>
+<section id="approach-2" class="slide level2">
+<h2>Approach 2</h2>
+<div>
+<ol type="1">
+<li class="fragment">Calculated average contribution<br>
+</li>
+<li class="fragment">Energy generation was compared to consumption</li>
+<li class="fragment">Evaluated impact of running at reduced capacity</li>
+</ol>
+</div>
 </section>
-<section id="graph-1" class="slide level2">
-<h2>Graph</h2>
+<section id="finding-1" class="slide level2">
+<h2>Finding 1</h2>
+<div class="fragment" data-fragment-index="1">
+<p>Peak month temperatures:</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li>July <em>86.62°F (95% CI: 86.57-86.68)</em><br>
+</li>
+<li>August <em>86.35°F</em> <em>(95% CI: 86.31-86.38)</em></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p>High Risk months:</p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<ul>
+<li>July <em>(72.7%)</em><br>
+</li>
+<li>August <em>(73.6%)</em></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p>Moderate Risk months:</p>
+</div>
+<div class="fragment" data-fragment-index="6">
+<ul>
+<li>June <em>(45.5%)</em></li>
+<li>September <em>(32%)</em></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
 
-<img data-src="Presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section></section>
-<section id="future-steps" class="title-slide slide level1 center">
-<h1>Future Steps</h1>
+
+<img data-src="Presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="finding-2" class="slide level2">
+<h2>Finding 2</h2>
+<div class="fragment" data-fragment-index="1">
+<p>Defined Contribution: <em>10.3%</em></p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p>Most impacted month: <em>50</em> of capacity April of 2023</p>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="Presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+</section></section>
+<section id="interpretation" class="title-slide slide level1 center">
+<h1>Interpretation</h1>
+<ul>
+<li>Power plant can cover reduced capacity of up to 30%</li>
+<li>Reduced Capacity likely needed during high and moderate risk months</li>
+<li>Failure to meet demand can be offset due to system</li>
+</ul>
+</section>
+
+<section id="limitations" class="title-slide slide level1 center">
+<h1>Limitations</h1>
+<ul>
+<li>Missing Data</li>
+<li>Lack of context</li>
+<li>Programming Errors</li>
+</ul>
+</section>
+
+<section id="recommendations" class="title-slide slide level1 center">
+<h1>Recommendations</h1>
+<div>
+<ul>
+<li class="fragment">Operate at reduced capacity from June-September</li>
+<li class="fragment">Expand analysis to include power plants under Alabama Power Company</li>
+<li class="fragment">Monitor increasing temperature and energy demand</li>
+</ul>
+</div>
+</section>
+
+<section id="refrences" class="title-slide slide level1 smaller scrollable">
+<h1>Refrences</h1>
+<div id="refs" role="list">
+
+</div>
 
 </section>
     </div>
