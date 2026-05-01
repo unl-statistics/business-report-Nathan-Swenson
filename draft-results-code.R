@@ -237,26 +237,3 @@ cinfw<- cinfw |> summarise(
   Mean = mean(Water.Temp...F.),
   ConfInt_High = mean(Water.Temp...F.) + 1.96 * (sd(Water.Temp...F.)/sqrt(length(Water.Temp...F.)))
 )
-
-#Projected temps
-
-mtempm$Year<- as.numeric(mtempm$Year)
-mtempm$Month<- factor(month.name[as.numeric(mtempm$Month)],
-                      levels = month.name)
-
-tmodel<- lm(Mean_Temp ~ Year * Month, data = mtempm)
-
-fwtemp<- expand.grid(
-  Year = seq(max(mtempm$Year) + 1,
-             max(mtempm$Year) + 5),
-  Month = levels(mtempm$Month)
-)
-
-fwtemp$Mean_Temp<- predict(tmodel, newdata = fwtemp)
-
-
-
-mtempm<- rbind(
-  mtempm,
-  fwtemp
-)

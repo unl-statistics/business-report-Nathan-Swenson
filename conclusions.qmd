@@ -9,8 +9,11 @@ This report analyzed the total impact of running at different levels of reduced 
 ## Limitations
 
 This study used public data from U.S. EIA and NOAA:
+
 -  The data on the generation from U.S. EIA were gathered from their EIA Beta to recieve the most up-to-date data. The data may have programming errors, but was found to not be substantial considering the support network.
+
 - This study only uses the generation data for the James M. Barry Electric Generating Plant. This study does not contain data on any other Alabama Power Company Power Plant.
+
 - There was no data for water temperature prior to 2002.
 
 ## Replication
@@ -21,4 +24,6 @@ While the results indicate that reduced capacity is manageable under elevated te
 1.  The company should run at reduced efficiency during the moderate risk and high risk months (June - September).
 
 2. To ensure security and adjust effectively, the company should conduct this analysis with information on the other power plants to be prepared for temperature rising.
+
+3. Conduct this analysis every 5 years to identify changing trends
 :::

@@ -1,6 +1,4 @@
----
-title: "Executive Summary"
----
+# Executive Summary
 
 ## Introduction {.unumbered}
 
@@ -8,7 +6,7 @@ Power plants are constrained to environmental factors. We must adapt to these co
 
 ## Methods {.unumbered}
 
-We used historical temperature from the North Oceanic Atmospheric Administration and energy data from the U.S. Energy Information Administration. Monthly temperature averages and proportions of days exceeding 85°F were calculated by each month to define risk levels. Risk levels were defined as High being above 50% of the month having temperatures exceeding 85°F and moderate as being above 30%. Linear regression models were used to estimate projected temperature trends. Energy Generation was compared with Alabama Power Company's Energy consumption to identify impact of running at reduced capacity levels between 10% to 30%. We assossiated reduced capacity of 10% with temperature levels between 85°F and 95°F.
+We used historical temperature from the North Oceanic Atmospheric Administration and energy data from the U.S. Energy Information Administration. Monthly temperature averages and proportions of days exceeding 85°F were calculated by each month to define risk levels. Risk levels were defined as High being above 50% of the month having temperatures exceeding 85°F and moderate as being above 30%. Energy Generation was compared with Alabama Power Company's Energy consumption to identify impact of running at reduced capacity levels between 10% to 30%. We assossiated reduced capacity of 10% with temperature levels between 85°F and 95°F.
 
 ## Results {.unumbered}
 
@@ -22,4 +20,6 @@ The analysis indicates that reduced capacity is managable under current conditio
 1.  The company should run at reduced efficiency during the moderate risk and high risk months (June - September).
 
 2. To ensure security and adjust effectively, the company should conduct this analysis with information on the other power plants to be prepared for temperature rising.
+
+3. Conduct this analysis every 5 years to identify changing trends
 :::

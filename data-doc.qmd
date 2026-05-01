@@ -9,36 +9,33 @@ editor:
 
 ### Background
 
-This dataset was collected from the National Oceanic Atmospheric Administration (NOAA) @station.
+This dataset was collected from the National Oceanic Atmospheric Administration (NOAA) [@station].
 The data[^draft-data-doc-1] covers hourly water temperature measurements from the years of 2020 to 2024.
-The data was meant to calculate the temperature trends at the Dauphin Island, AL station (ID: 8735180) @station. The temperature data was collected using meteorological in 6 minute intervals @co-opsp. There are two format type of data one in 6 minute increments and the other in hourly increments.
-To validate this data there are three algorithms that collect and process data and then are compared against satellite data @star-g. Due to the freedom of Information Act any person has the right to obtain the records @foia:fr2026. NOAA use Optimum Interpolation Sea Surface Temperature, which integrate a variety of ways that collects data and puts it in a global grid @optimum2020.
+The data was meant to calculate the temperature trends at the Dauphin Island, AL station (ID: 8735180) [@station]. The temperature data was collected using meteorological in 6 minute intervals [@co-opsp]. There are two format type of data one in 6 minute increments and the other in hourly increments.
+To validate this data there are three algorithms that collect and process data and then are compared against satellite data [@star-g]. Due to the freedom of Information Act any person has the right to obtain the records [@foia]:fr2026. NOAA use Optimum Interpolation Sea Surface Temperature, which integrate a variety of ways that collects data and puts it in a global grid [@optimum2020].
 
-[^draft-data-doc-1]: https://tidesandcurrents.noaa.gov/physocean.html?i
-    d=8735180
+[^draft-data-doc-1]: <https://tidesandcurrents.noaa.gov/physocean.html?i
+    d=8735180>
 
 ### Codebook
 
 The main variable of interest is *Water.Temp...F.*, where it is the water temperature given at the hourly intervals.
 They measured the temperature in Fahrenheit, missing values are indicated with *-*.
-It is important to note that there is no data in 2021 due to Hurricane Ida as well as missing months for the following years: 
-2022: January, February
-2023: July, August, September, October, November, December
-2024: January, February, March
+It is important to note that there is no data in 2021 due to Hurricane Ida
 
 ## Energy Production
 
 ### Background
 
 Data from the James M. Barry Generating Plant was collected by the U.S.
-Energy Information Administration @electric.
+Energy Information Administration [@electric].
 The data[^draft-data-doc-2] gives the net generation of energy, in megawatt hours (MWh), over the years of 2020 to 2024.
-The power plant reports the data to the EIA @surveyf.
+The power plant reports the data to the EIA [@surveyf].
 The data gathers the MWh generated for a given month.
-The data is free and open to the public @opendata. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
+The data is free and open to the public [@opendata]. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
 
-[^draft-data-doc-2]: https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f
-    req=M&start=202001&end=202512&ctype=linechart&ltype=pin&tab=generation&columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&maptype=0&pin=&linechart=
+[^draft-data-doc-2]: <https://www.eia.gov/beta/electricity/data/browser/#/plant/3?f
+    req=M&start=202001&end=202512&ctype=linechart&ltype=pin&tab=generation&columnchart=ELEC.PLANT.GEN.3-ALL-ALL.M&maptype=0&pin=&linechart=>
 
 ### Codebook
 
@@ -50,12 +47,12 @@ Missing data was indicated with *--* there is missing data for January of 2020 a
 ### Background
 
 Data on electricity consumption for Alabama Power Company was collected by the U.S.
-Energy Information Administration (EIA) @formeia.
+Energy Information Administration (EIA) [@formeia].
 The data[^draft-data-doc-3] gives the overall consumption of energy, in megawatt hours (MWh), over the years of 2020 to 2024.
-The data is reported from the power plant and sent to the EIA @surveyf. The data gathers the megawatt hours consumed for a given month.
-The data is free and open to the public @opendata. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
+The data is reported from the power plant and sent to the EIA [@surveyf]. The data gathers the megawatt hours consumed for a given month.
+The data is free and open to the public [@opendata]. The data uses megawatt hours because it gathers how many megawatts were generated for a given month.
 
-[^draft-data-doc-3]: https://www.eia.gov/electricity/data/eia861m/
+[^draft-data-doc-3]: <https://www.eia.gov/electricity/data/eia861m/>
 
 ### Codebook
 
